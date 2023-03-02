@@ -37,8 +37,7 @@ try:
     streamlit.dataframe(back_from_funtion)
 except URLerror as e:
   streamlit.error()
-  
-streamlit.stop()
+
 
 import snowflake.connector
 streamlit.header("The fruit load list contains:")
