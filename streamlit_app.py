@@ -1,4 +1,8 @@
 import streamlit
+import snowflake.connector
+import pandas
+import requests
+from urllib.error import URLError
 
 streamlit.title('Me Parents New Healthy Diner')
 streamlit.header('Breakfast Favorites')
@@ -8,7 +12,6 @@ streamlit.text('🐔 Hard-Boiled Free-Range Egg')
 streamlit.text('🥑🍞 Avocado Toast')
 streamlit.header('🍌🥭 Build Your Own Fruit Smoothie 🥝🍇')
 
-import pandas
 my_fruit_list = pandas.read_csv("https://uni-lab-files.s3.us-west-2.amazonaws.com/dabw/fruit_macros.txt")
 my_fruit_list = my_fruit_list.set_index('Fruit')
 
@@ -43,4 +46,5 @@ streamlit.dataframe(my_data_rows)
 
 add_my_fruit = streamlit.text_input('What fruit would you like to add?','')
 streamlit.write('Thank you for adding', add_my_fruit)
-
+streamlit.stop()
+my_cur.execute("insert into fruit_load_list values ('from Streamlit')");
